@@ -6,7 +6,7 @@ import { LuCakeSlice } from "react-icons/lu";
 const MiniDashboard = () => {
   return (
     <div className="py-5">
-      <div className="stats shadow border border-gray-800 w-full stats-vertical lg:stats-horizontal">
+      <div className="stats shadow border border-gray-800 w-full stats-vertical lg:stats-horizontal ">
         <div className="stat">
           <div className="stat-title text-xl font-bold text-white">
             Resep Tersedia

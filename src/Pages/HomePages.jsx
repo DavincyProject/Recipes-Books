@@ -1,6 +1,8 @@
 import React from "react";
 import MiniDashboard from "../Components/MiniDashboard";
 import FilterCard from "../Components/FilterCard";
+import MobileFilter from "../Components/Responsive/MobileFilter";
+import ItemCard from "../Components/ItemCard";
 
 const HomePages = () => {
   return (
@@ -14,9 +16,14 @@ const HomePages = () => {
 
       {/* dashboard start here */}
       <div>
-        <MiniDashboard />
+        <div className="hidden md:block">
+          <MiniDashboard />
+        </div>
         <FilterCard />
       </div>
+
+      {/* card items will be shown here */}
+      <ItemCard />
     </div>
   );
 };
