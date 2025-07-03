@@ -4,40 +4,49 @@ import { IoMdStopwatch } from "react-icons/io";
 import { BsPeopleFill } from "react-icons/bs";
 import { FaRegEye, FaRegEdit } from "react-icons/fa";
 import { MdDeleteSweep } from "react-icons/md";
+import propTypes from "prop-types";
 
-const ItemCard = () => {
+const ItemCard = ({ recipe }) => {
+  const {
+    namaResep,
+    deskripsi,
+    urlGambar,
+    kategori,
+    tingkatKesulitan,
+    waktuMemasak,
+    porsi,
+  } = recipe;
   return (
     <div className="py-5">
       <div className="card bg-white w-full max-w-[400px] shadow-sm text-black">
         <figure>
           <img
-            src="https://i.imgur.com/DieShuq.jpeg"
+            src={urlGambar}
             className="max-h-48 w-full object-cover"
-            alt="Shoes"
+            alt={namaResep}
           />
         </figure>
         <div className="card-body">
           <div className="card-actions justify-start">
             <div className="badge text-orange-800 font-bold bg-orange-300 border-none ">
-              <CiForkAndKnife /> Main Course
+              <CiForkAndKnife /> {kategori}
             </div>
           </div>
-          <h2 className="card-title -mb-1">Nasi Goreng Spesial</h2>
-          <p className="text-gray-500 text-justify">
-            Nasi goreng dengan bumbu rahasia yang lezat dan menggugah selera
-          </p>
+          <h2 className="card-title -mb-1">{namaResep}</h2>
+          <p className="text-gray-500 text-justify">{deskripsi}</p>
 
           <div className="flex items-center gap-2">
             <div className="flex items-center gap-1 text-gray-500">
               <IoMdStopwatch size={15} />
-              30 menit
+              {waktuMemasak}
             </div>
 
             <div className="flex items-center gap-1 text-gray-500">
-              <BsPeopleFill size={15} />4 Porsi
+              <BsPeopleFill size={15} />
+              {porsi}
             </div>
 
-            <div className="badge badge-success">Easy</div>
+            <div className="badge badge-success">{tingkatKesulitan}</div>
           </div>
 
           <div className="h-full gap-2 flex justify-center items-center">
@@ -76,6 +85,18 @@ const ItemCard = () => {
       </div>
     </div>
   );
+};
+
+ItemCard.propTypes = {
+  recipe: propTypes.shape({
+    namaResep: propTypes.string.isRequired,
+    deskripsi: propTypes.string.isRequired,
+    urlGambar: propTypes.string.isRequired,
+    kategori: propTypes.string.isRequired,
+    tingkatKesulitan: propTypes.string.isRequired,
+    waktuMemasak: propTypes.string.isRequired,
+    porsi: propTypes.string.isRequired,
+  }).isRequired,
 };
 
 export default ItemCard;
